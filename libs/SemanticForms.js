@@ -1140,24 +1140,28 @@ jQuery(document).ready( function() {
 		handle: '.instanceRearranger',
 		update: function(event, ui) {
 			//TODO: duplication
-			if (event.target) {
-				if( $(event.target).find('.multipleTemplateInstance ').length ) {
-					$(event.target).find('.multipleTemplateInstance ').each(function(i,v){
-						if( $(v).find('.instanceRearranger span.numberer').length ) {
-							$(v).find('.instanceRearranger span.numberer').text( i+1 );
-						}else{
-							$(v).find('.instanceRearranger').append('<span class="numberer">'+(i+1)+'</span>');
-						}
-					})
+			if( $(event.target).parent().parent().hasClass('sf-multi-template-ordered') ) {
+				if (event.target) {
+					if ($(event.target).find('.multipleTemplateInstance ').length) {
+						$(event.target).find('.multipleTemplateInstance ').each(function (i, v) {
+							if ($(v).find('.instanceRearranger span.numberer').length) {
+								$(v).find('.instanceRearranger span.numberer').text(i + 1);
+							} else {
+								$(v).find('.instanceRearranger').append('<span class="numberer">' + (i + 1) + '</span>');
+							}
+						})
+					}
 				}
 			}
 		},
 		create: function( event, ui ) {
 			if (event.target) {
-				if( $(event.target).find('.multipleTemplateInstance ').length ) {
-					$(event.target).find('.multipleTemplateInstance ').each(function(i,v){
-						$(v).find('.instanceRearranger').append('<span class="numberer">'+(i+1)+'</span>');
-					})
+				if( $(event.target).parent().parent().hasClass('sf-multi-template-ordered') ) {
+					if ($(event.target).find('.multipleTemplateInstance ').length) {
+						$(event.target).find('.multipleTemplateInstance ').each(function (i, v) {
+							$(v).find('.instanceRearranger').append('<span class="numberer">' + (i + 1) + '</span>');
+						})
+					}
 				}
 			}
 		},
@@ -1175,15 +1179,17 @@ jQuery(document).ready( function() {
 		}
 	}).on('sortupdate', function(event){
 		//TODO: duplication
-		if (event.target) {
-			if( $(event.target).find('.multipleTemplateInstance ').length ) {
-				$(event.target).find('.multipleTemplateInstance ').each(function(i,v){
-					if( $(v).find('.instanceRearranger span.numberer').length ) {
-						$(v).find('.instanceRearranger span.numberer').text( i+1 );
-					}else{
-						$(v).find('.instanceRearranger').append('<span class="numberer">'+(i+1)+'</span>');
-					}
-				})
+		if( $(event.target).parent().parent().hasClass('sf-multi-template-ordered') ) {
+			if (event.target) {
+				if ($(event.target).find('.multipleTemplateInstance ').length) {
+					$(event.target).find('.multipleTemplateInstance ').each(function (i, v) {
+						if ($(v).find('.instanceRearranger span.numberer').length) {
+							$(v).find('.instanceRearranger span.numberer').text(i + 1);
+						} else {
+							$(v).find('.instanceRearranger').append('<span class="numberer">' + (i + 1) + '</span>');
+						}
+					})
+				}
 			}
 		}
 	});
